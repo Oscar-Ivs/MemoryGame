@@ -34,3 +34,20 @@ function startGame() {
     });
 }
 
+//Handling the cell clicks
+function handleCellClick(event) {
+    const cell = event.target;
+    if (!awaitingAnswer || !activeCell) return; //Ignore the click if the game is not active
+
+    if (cell === activeCell) {
+        correctScore++;
+    }
+    else {
+        incorrectScore++;
+    }
+    updateScore();
+    awaitingAnswer = false; //Allow the game to continue
+    activeCell = null; //Reset the active cell
+    setTimeout(startGame, 1000); //Start a new round after 1s
+}
+
