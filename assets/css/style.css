@@ -31,3 +31,7 @@ body h1 {
 game-grid div:hover {
     cursor: pointer;
 }
+
+.container {
+    margin-top: 1rem !important;
+}
