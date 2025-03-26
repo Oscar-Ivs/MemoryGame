@@ -65,7 +65,7 @@ This Memory Game combines simplicity with flexibility, ensuring it’s accessibl
 
 ---
 
-## User Story 4: Expert Mode with Sequential Highlights (Should-Have)
+## User Story 4: Expert Mode with Sequential Highlights (Could-Have)
 **As an Advanced Player, I want to activate an "Expert Mode," where highlighted cells appear sequentially (rather than simultaneously), challenging me to memorize not just the cells but also the order of highlights.**
 
 ### Acceptance Criteria
@@ -117,3 +117,29 @@ This Memory Game combines simplicity with flexibility, ensuring it’s accessibl
 ### Tasks
 - Write clear and concise game instructions.
 - Integrate help/instructions section into the game interface.
+
+Here's the text clearly formatted as Markdown, ready for inclusion in your `README.md`:
+
+```markdown
+## 🐞 Bug Fix: Preventing Multiple Clicks and Timer Overlaps
+
+### Issue
+When quickly clicking multiple cells, timers controlling cell highlighting and game rounds overlapped, causing multiple cells to highlight simultaneously and eventually freezing the game.
+
+### 🔍 Testing & Findings
+- Identified two independent `setTimeout` calls (highlight timer and new-round timer) causing timing conflicts.
+- Rapid clicks triggered multiple timers, leading to overlapping highlights and inconsistent gameplay.
+
+### ✅ Implemented Fixes
+- **Managed Timers Explicitly:**  
+  Introduced dedicated variables (`highlightTimeout`, `newRoundTimeout`) to clearly track and manage each timer individually.
+  
+- **Cleared Previous Timers:**  
+  Used `clearTimeout()` before initiating new rounds or highlighting actions to eliminate conflicts from previously running timers.
+  
+- **Immediate Click Disabling:**  
+  Disabled additional clicks immediately after the player's first interaction each round, preventing unintended behaviors until the next round properly initiates.
+
+###  Result
+The game now runs smoothly without overlapping highlights or freezes, providing a stable and consistent gameplay experience.
+```
