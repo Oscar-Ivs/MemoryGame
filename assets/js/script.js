@@ -1,8 +1,10 @@
 const gridSize = 4;
 let correctScore = 0;
 let incorrectScore = 0;
-let awaitingAnswer = false; // to prevent multiple clicks
-let activeCell = null; // to store the active cell
+let awaitingAnswer = false;
+let activeCell = null;
+let highlightTimeout = null;
+let newRoundTimeout = null;
 
 // Create grid dynamically
 const gameGrid = document.getElementById('game-grid');
@@ -12,49 +14,60 @@ for (let i = 0; i < gridSize * gridSize; i++) {
     gameGrid.appendChild(cell);
 }
 
-// Starting the game
+// Function to start a new game round
 function startGame() {
-    if (awaitingAnswer) return; // Not possible to start a new game while waiting for the answer
+    clearTimeout(highlightTimeout);
+    clearTimeout(newRoundTimeout);
+
+    if (awaitingAnswer) return;
 
     const cells = document.querySelectorAll('#game-grid div');
-    let randomIndex = Math.floor(Math.random() * cells.length);
-    activeCell = cells[randomIndex];
-
-    // Highlight the active cell for 500ms
+    activeCell = cells[Math.floor(Math.random() * cells.length)];
     activeCell.classList.add('active');
     awaitingAnswer = true;
 
-    setTimeout(() => {
+    highlightTimeout = setTimeout(() => {
         activeCell.classList.remove('active');
+        activeCell = null; // deactivate cell after highlight ends
     }, 500);
 
-        // Only allow one click per round
-        cells.forEach(cell => {
-            cell.onclick = handleCellClick;
-        });
-    }
-    
-    //Handling the cell clicks
-    function handleCellClick(event) {
-        const cell = event.target;
-        if (!awaitingAnswer || !activeCell) return; // Ignore the click if the game is not active
-    
-        if (cell === activeCell) {
-            correctScore++;
-        } else {
-            incorrectScore++;
-        }
-        updateScores();
-        awaitingAnswer = false; // Allow the game to continue
-        activeCell = null; // Reset active cell
-        setTimeout(startGame, 1000); // Start a new round after 1s
+    // set onclick events
+    cells.forEach(cell => {
+        cell.onclick = handleCellClick;
+    });
 }
 
-// Update the scores on the screen
+// Function handling cell clicks
+function handleCellClick(event) {
+    if (!awaitingAnswer) return;
+
+    const cell = event.target;
+    awaitingAnswer = false; // prevent additional clicks
+
+    // Immediately disable further clicks
+    document.querySelectorAll('#game-grid div').forEach(c => c.onclick = null);
+
+    clearTimeout(highlightTimeout); // Ensure highlight ends immediately after click
+    if (activeCell) activeCell.classList.remove('active');
+
+    if (cell === activeCell) {
+        correctScore++;
+    } else {
+        incorrectScore++;
+    }
+
+    updateScores();
+    activeCell = null;
+
+    // Set next round after a short break, clearly managed timeout
+    newRoundTimeout = setTimeout(startGame, 1000);
+}
+
+// Function to update scores displayed
 function updateScores() {
     document.getElementById('score').textContent = correctScore;
     document.getElementById('incorrect').textContent = incorrectScore;
 }
 
-// Start the game when the page loads
+// Start the first game when page loads
 startGame();
