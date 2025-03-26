@@ -118,9 +118,8 @@ This Memory Game combines simplicity with flexibility, ensuring it’s accessibl
 - Write clear and concise game instructions.
 - Integrate help/instructions section into the game interface.
 
-Here's the text clearly formatted as Markdown, ready for inclusion in your `README.md`:
+---
 
-```markdown
 ## 🐞 Bug Fix: Preventing Multiple Clicks and Timer Overlaps
 
 ### Issue
@@ -142,4 +141,4 @@ When quickly clicking multiple cells, timers controlling cell highlighting and g
 
 ###  Result
 The game now runs smoothly without overlapping highlights or freezes, providing a stable and consistent gameplay experience.
-```
+#
