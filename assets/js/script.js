@@ -51,3 +51,12 @@ function handleCellClick(event) {
     setTimeout(startGame, 1000); //Start a new round after 1s
 }
 
+//Update the score on the screen
+function updateScore() {
+    document.getElementById('correct-score').textContent = correctScore;
+    document.getElementById('incorrect-score').textContent = incorrectScore;
+}
+
+//Start the game when the page loads
+startGame();
+
