@@ -1,5 +1,5 @@
-body {
-    font-family: Arial, sans-serif;
+body h1 {
+    font-family: Limelight, sans-serif;
 }
 
 .text-center {
@@ -10,7 +10,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 5px;
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
