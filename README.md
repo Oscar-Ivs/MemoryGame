@@ -4,7 +4,7 @@ This Memory Game project offers players an engaging and customizable memory chal
 
 ### Key Features:
 
-Dynamic Grid Size: Adjust the grid size from a simple 4x4 layout up to a challenging 20x20 grid.
+Dynamic Grid Size: Adjust the grid size from a simple 4x4 layout up to a challenging 15x15 grid.
 
 Highlighting Speed Control: Personalize reaction challenges by setting how long each cell remains highlighted, ranging from 100ms to 1 second.
 
