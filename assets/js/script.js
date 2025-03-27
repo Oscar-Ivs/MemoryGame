@@ -28,7 +28,6 @@ function startGame() {
 
     highlightTimeout = setTimeout(() => {
         activeCell.classList.remove('active');
-        activeCell = null; // deactivate cell after highlight ends
     }, 500);
 
     // set onclick events
