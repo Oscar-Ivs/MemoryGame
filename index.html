@@ -15,18 +15,26 @@
 
     <div class="container mt-5">
         <div class="score-area mb-3 text-center">
-            <p class="scores">Correct Answers: <span id="score">0</span></p>
-            <p class="scores">Incorrect Answers: <span id="incorrect">0</span></p>
+            <p class="scores">
+                <span class="fw-bold">Correct Answers:</span>
+                <span id="score" class="text-success fw-bold">0</span>
+            </p>
+            <p class="scores">
+                <span class="fw-bold">Incorrect Answers:</span>
+                <span id="incorrect" class="text-danger fw-bold">0</span>
+            </p>
         </div>
+    </div>
+    
 
         <div class="row">
             <!-- Game grid area -->
-            <div class="col-12 col-md-9">
+            <div class="col-12 col-md-7 col-lg-9 col-xl-8">
                 <div id="game-grid" class="game-grid"></div>
             </div>
 
             <!-- User options and sliders -->
-            <div class="col-12 col-md-3" id="user-options" style="display: flex; justify-content: center; align-items: center;">
+            <div class="col-12 col-md-3 col-lg-2" id="user-options" style="display: flex; justify-content: center; align-items: center;">
                 <table class="table">
                     <tbody>
                     <tr>
