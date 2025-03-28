@@ -164,4 +164,96 @@ Added & Updated
 >        startGame();
 >    }
 
-#
+## Issue 3
+### If grid size slider moved, game stop working
+### 🔍 Testing & Findings
+
+Incomplete State Reset: When  is called, it clears all timeouts, resets scores, and calls . However, any pending logic from the previous game round (like an ongoing timeout or  state) might not be fully resolved. Make sure  is explicitly reset to  at the start of .
+
+Empty Grid: If the slider is moved too quickly, the  line clear the grid before it has a chance to find valid cells, causing the game logic to break.
+Adding a check for whether the grid contains cells before starting the game.
+
+### Code:
+```javascript
+<script>    const slider = document.getElementById('grid-slider');
+const grid = document.getElementById('game-grid');
+
+function updateGrid() {
+    const numColumns = slider.value;
+    grid.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`; // Dynamically updates the columns
+    grid.innerHTML = ''; // Clear the existing cells
+
+    // Calculate total number of cells (assume a square grid)
+    const totalCells = numColumns * numColumns;
+
+    // Generate grid cells
+    for (let i = 0; i < totalCells; i++) {
+        const cell = document.createElement('div');
+        grid.appendChild(cell);
+    }
+}
+
+// Initialize the grid
+updateGrid();
+
+// Update the grid whenever the slider changes
+slider.addEventListener('input', updateGrid);
+```
+### Code updated to a more appropriate one:
+```javascript
+function updateGrid() {
+    clearTimeout(highlightTimeout);
+    clearTimeout(newRoundTimeout);
+
+    const numColumns = slider.value;
+    grid.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`;
+    grid.innerHTML = '';
+
+    const totalCells = numColumns * numColumns;
+
+    for (let i = 0; i < totalCells; i++) {
+        const cell = document.createElement('div');
+        cell.dataset.index = i;
+        grid.appendChild(cell);
+    }
+
+    // Reset scores and game state
+    correctScore = 0;
+    incorrectScore = 0;
+    awaitingAnswer = false; // Explicitly reset
+    updateScores();
+
+    // Only start the game if there are cells
+    if (totalCells > 0) {
+        startGame();
+    }
+}
+
+function startGame() {
+    clearTimeout(highlightTimeout);
+    clearTimeout(newRoundTimeout);
+
+    if (awaitingAnswer) return;
+
+    const cells = document.querySelectorAll('#game-grid div');
+    if (cells.length === 0) return;
+
+    // Remove previous event listeners
+    cells.forEach(cell => {
+        cell.onclick = null;
+    });
+
+    activeCell = cells[Math.floor(Math.random() * cells.length)];
+    activeCell.classList.add('active');
+    awaitingAnswer = true;
+
+    highlightTimeout = setTimeout(() => {
+        activeCell.classList.remove('active');
+    }, 500);
+
+    cells.forEach(cell => {
+        cell.onclick = handleCellClick;
+    });
+}
+```
+
