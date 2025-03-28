@@ -38,6 +38,7 @@ game-grid div:hover {
 
 /* Slider styling */
 .form-control-range {
+    appearance: none;
     -webkit-appearance: none; /* Remove default styling */
     width: 15%;
     height: 10px;

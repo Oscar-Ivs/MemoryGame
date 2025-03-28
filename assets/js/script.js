@@ -6,13 +6,31 @@ let activeCell = null;
 let highlightTimeout = null;
 let newRoundTimeout = null;
 
-// Create grid dynamically
-const gameGrid = document.getElementById('game-grid');
-for (let i = 0; i < gridSize * gridSize; i++) {
-    const cell = document.createElement('div');
-    cell.dataset.index = i;
-    gameGrid.appendChild(cell);
+// Grid slider logic
+const slider = document.getElementById('grid-slider');
+const grid = document.getElementById('game-grid');
+
+function updateGrid() {
+    const numColumns = slider.value;
+    grid.style.gridTemplateColumns = `repeat(${numColumns}, 1fr)`; // Dynamically updates the columns
+    grid.innerHTML = ''; // Clear the existing cells
+
+    // Calculate total number of cells (assume a square grid)
+    const totalCells = numColumns * numColumns;
+
+    // Generate grid cells
+    for (let i = 0; i < totalCells; i++) {
+        const cell = document.createElement('div');
+        grid.appendChild(cell);
+    }
 }
+
+// Initialize the grid
+updateGrid();
+
+// Update the grid whenever the slider changes
+slider.addEventListener('input', updateGrid);
+
 
 // Function to start a new game round
 function startGame() {
