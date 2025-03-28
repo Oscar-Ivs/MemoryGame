@@ -145,14 +145,23 @@ The game now runs smoothly without overlapping highlights or freezes, providing 
 ## Issue 2
 ### Game grid starts as 4x8 instead of 4x4
 ### ✅ Implemented Fixes
-Removed > const gridSize = 4;
-Added to function()
-  clearTimeout(highlightTimeout);
-  clearTimeout(newRoundTimeout);
-  Removed > // Update the grid whenever the slider changes
-slider.addEventListener('input', updateGrid);
-Added & Updated >  if (totalCells > 0) {
-        startGame();
-    }
+Removed
+> const gridSize = 4;
+
+Added to
+>function()
+  >clearTimeout(highlightTimeout);
+  >clearTimeout(newRoundTimeout);
+
+  Removed
+  
+  > // Update the grid whenever the slider changes
+> slider.addEventListener('input', updateGrid);
+
+Added & Updated
+
+>  if (totalCells > 0) {
+>        startGame();
+>    }
 
 #
