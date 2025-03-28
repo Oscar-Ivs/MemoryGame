@@ -28,8 +28,11 @@ body h1 {
     background-color: #950303;
 }
 
-game-grid div:hover {
+.game-grid div:hover {
     cursor: pointer;
+    background-color: #dfdfdf;
+    transform: scale(1.07);
+    transition: transform 0.1s ease-in-out, background-color 0.2s;
 }
 
 .container {
