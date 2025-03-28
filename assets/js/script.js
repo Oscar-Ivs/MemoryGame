@@ -101,3 +101,13 @@ function updateScores() {
 // Initialize grid and event listeners
 updateGrid();
 slider.addEventListener('input', updateGrid);
+
+// Time Slider logic
+let highlightDuration = 1000; // Default duration of 1s
+
+const timeSlider = document.getElementById('time-slider');
+
+timeSlider.Slider.addEventListener('input', () => {
+    const sliderValue = parseInt(timeSlider.value);
+    document.getElementById('time-value').textContent = sliderValue;
+});
