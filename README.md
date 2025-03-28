@@ -122,8 +122,8 @@ This Memory Game combines simplicity with flexibility, ensuring it’s accessibl
 
 ## 🐞 Bug Fix: Preventing Multiple Clicks and Timer Overlaps
 
-### Issue
-When quickly clicking multiple cells, timers controlling cell highlighting and game rounds overlapped, causing multiple cells to highlight simultaneously and eventually freezing the game.
+## Issue 1
+### When quickly clicking multiple cells, timers controlling cell highlighting and game rounds overlapped, causing multiple cells to highlight simultaneously and eventually freezing the game.
 
 ### 🔍 Testing & Findings
 - Identified two independent `setTimeout` calls (highlight timer and new-round timer) causing timing conflicts.
@@ -141,4 +141,18 @@ When quickly clicking multiple cells, timers controlling cell highlighting and g
 
 ###  Result
 The game now runs smoothly without overlapping highlights or freezes, providing a stable and consistent gameplay experience.
+
+## Issue 2
+### Game grid starts as 4x8 instead of 4x4
+### ✅ Implemented Fixes
+Removed > const gridSize = 4;
+Added to function()
+  clearTimeout(highlightTimeout);
+  clearTimeout(newRoundTimeout);
+  Removed > // Update the grid whenever the slider changes
+slider.addEventListener('input', updateGrid);
+Added & Updated >  if (totalCells > 0) {
+        startGame();
+    }
+
 #
