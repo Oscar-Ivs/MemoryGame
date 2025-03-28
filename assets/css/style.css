@@ -30,7 +30,7 @@ body h1 {
 
 .game-grid div:hover {
     cursor: pointer;
-    background-color: #dfdfdf;
+    background-color: #e3b7b7;
     transform: scale(1.07);
     transition: transform 0.1s ease-in-out, background-color 0.2s;
 }

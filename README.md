@@ -172,7 +172,7 @@ Incomplete State Reset: When  is called, it clears all timeouts, resets scores, 
 
 Empty Grid: If the slider is moved too quickly, the  line clear the grid before it has a chance to find valid cells, causing the game logic to break.
 Adding a check for whether the grid contains cells before starting the game.
-
+### ✅ Implemented Fixes
 ### Code:
 ```javascript
 <script>    const slider = document.getElementById('grid-slider');
@@ -256,4 +256,21 @@ function startGame() {
     });
 }
 ```
+## Issue 4
+### If speed slider moved, speed doesn't change, even it's not 1000ms, but more like 500ms
+### 🔍 Testing & Findings
+**Slider Value Not Updating**: Although the slider updates the text content in , it's not adjusting the  variable dynamically based on the slider's value.
 
+**Static Timeout Values**: The  and  functions are using hardcoded values ( and ) instead of dynamically tying these delays to .
+### ✅ Implemented Fixes
+1. Ensure the slider input updates the  value properly
+2. Replace all hardcoded timeout values with.
+### Changes:
+The  now dynamically updates  based on the slider value.
+>highlightDuration = sliderValue * 100;
+
+All instances of **setTimeout** now use **highlightDuration** instead of static values (500ms or 1000ms).
+
+>highlightTimeout = setTimeout(() => { ... }, highlightDuration);
+
+>newRoundTimeout = setTimeout(startGame, highlightDuration);

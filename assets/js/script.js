@@ -5,9 +5,22 @@ let activeCell = null;
 let highlightTimeout = null;
 let newRoundTimeout = null;
 
+// Default highlight duration
+let highlightDuration = 1000; // Starts at 1s
+
 // DOM elements
 const slider = document.getElementById('grid-slider');
 const grid = document.getElementById('game-grid');
+const timeSlider = document.getElementById('time-slider');
+
+// Time Slider logic to update highlightDuration dynamically
+timeSlider.addEventListener('input', () => {
+    const sliderValue = parseInt(timeSlider.value); // Get the slider value
+    document.getElementById('time-value').textContent = sliderValue; // Display the value
+
+    // Reverse mapping: Max slider value - current slider value (e.g., 1 -> 1000ms, 10 -> 100ms)
+    highlightDuration = 1100 - (sliderValue * 100); // Adjust to match desired range
+});
 
 // Function to update the grid layout dynamically
 function updateGrid() {
@@ -26,13 +39,11 @@ function updateGrid() {
         grid.appendChild(cell);
     }
 
-    // Reset scores and game state
     correctScore = 0;
     incorrectScore = 0;
     awaitingAnswer = false; // Explicitly reset
     updateScores();
 
-    // Only start the game if there are cells
     if (totalCells > 0) {
         startGame();
     }
@@ -59,7 +70,7 @@ function startGame() {
 
     highlightTimeout = setTimeout(() => {
         activeCell.classList.remove('active');
-    }, 500);
+    }, highlightDuration); // Use dynamic highlightDuration
 
     cells.forEach(cell => {
         cell.onclick = handleCellClick;
@@ -73,7 +84,6 @@ function handleCellClick(event) {
     const cell = event.target;
     awaitingAnswer = false;
 
-    // Disable all cell clicks immediately
     document.querySelectorAll('#game-grid div').forEach(c => c.onclick = null);
 
     clearTimeout(highlightTimeout);
@@ -88,8 +98,7 @@ function handleCellClick(event) {
     updateScores();
     activeCell = null;
 
-    // Start next round
-    newRoundTimeout = setTimeout(startGame, 1000);
+    newRoundTimeout = setTimeout(startGame, highlightDuration); // Use dynamic highlightDuration
 }
 
 // Function to update scores
@@ -101,13 +110,3 @@ function updateScores() {
 // Initialize grid and event listeners
 updateGrid();
 slider.addEventListener('input', updateGrid);
-
-// Time Slider logic
-let highlightDuration = 1000; // Default duration of 1s
-
-const timeSlider = document.getElementById('time-slider');
-
-timeSlider.Slider.addEventListener('input', () => {
-    const sliderValue = parseInt(timeSlider.value);
-    document.getElementById('time-value').textContent = sliderValue;
-});
