@@ -287,7 +287,8 @@ Any clicks beyond the required (cellCount) were being counted as incorrect answe
 
 **Fix:** 
 Limited the number of clicks per round to the value of (cellCount). Additional clicks are now ignored until the next round begins.
-```let clickCount = 0; // Counter for player clicks in the current round
+```javascript
+let clickCount = 0; // Counter for player clicks in the current round
 
 // Increment counter and check clicks
 clickCount++;
@@ -300,7 +301,7 @@ if (clickCount === cellCount) {
 
  **Fix:**
  Ensured the game resets completely by clearing all active cells, timeouts, and click listeners whenever settings are updated.
- ```
+ ```javascript
  cells.forEach(cell => {
     cell.classList.remove('active'); // Reset visual state
 });
@@ -311,7 +312,7 @@ if (clickCount === cellCount) {
 
   **Fix:**
   Explicitly removed all event listeners from cells during game resets and at the start of new rounds.
-  ```
+  ```javascript
   awaitingAnswer = false;
 activeCells = [];
 clickCount = 0; // Ensure clean state for new round
@@ -321,7 +322,7 @@ clickCount = 0; // Ensure clean state for new round
 
 **Dynamic Highlight Duration:**
 Adjusted the highlight duration (highlightDuration) dynamically based on the slider settings, improving gameplay flexibility.
-```
+```javascript
 highlightDuration = 1100 - (sliderValue * 100); // Adjust duration dynamically
 ```
 **Consistent State Management:**
