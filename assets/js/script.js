@@ -1,7 +1,8 @@
 let correctScore = 0;
 let incorrectScore = 0;
 let awaitingAnswer = false;
-let activeCells = []; //Support for multiple active cells
+let activeCells = []; // Support for multiple active cells
+let clickCount = 0; // Counter for player clicks in the current round
 let highlightTimeout = null;
 let newRoundTimeout = null;
 let cellCount = 1; // Default cell count
@@ -28,6 +29,7 @@ timeSlider.addEventListener('input', () => {
 countSlider.addEventListener('input', () => {
     cellCount = parseInt(countSlider.value); // Update the cell count
     document.getElementById('theme-value').textContent = cellCount;
+    resetGame(); // Restart the game when cell count changes
 });
 
 // Function to update the grid layout dynamically
@@ -53,8 +55,24 @@ function updateGrid() {
     updateScores();
 
     if (totalCells > 0) {
-        startGame();
+        resetGame(); // Restart the game when grid size changes
     }
+}
+
+// Function to reset the game state and start a new round
+function resetGame() {
+    clearTimeout(highlightTimeout);
+    clearTimeout(newRoundTimeout);
+
+    awaitingAnswer = false;
+    activeCells = [];
+    clickCount = 0; // Reset the click counter
+    const cells = document.querySelectorAll('#game-grid div');
+    cells.forEach(cell => {
+        cell.onclick = null; // Remove event listeners
+        cell.classList.remove('active'); // Ensure no stuck active state
+    });
+    startGame();
 }
 
 // Function to start a new game round
@@ -68,9 +86,13 @@ function startGame() {
     if (cells.length === 0) return;
 
     // Remove previous event listeners
-    cells.forEach(cell => cell.onclick = null);
+    cells.forEach(cell => {
+        cell.onclick = null; // Remove old event listeners
+        cell.classList.remove('active'); // Ensure all cells are reset
+    });
 
     activeCells = []; // Reset active cells array
+    clickCount = 0; // Reset the click counter for the new round
 
     // Select the desired number of unique random cells to highlight
     while (activeCells.length < cellCount) {
@@ -84,11 +106,11 @@ function startGame() {
     awaitingAnswer = true;
 
     highlightTimeout = setTimeout(() => {
-        activeCells.forEach(cell => cell.classList.remove('active'));
+        activeCells.forEach(cell => cell.classList.remove('active')); // Clear active state after highlight
     }, highlightDuration); // Use dynamic highlightDuration
 
     cells.forEach(cell => {
-        cell.onclick = handleCellClick;
+        cell.onclick = handleCellClick; // Attach event listeners for the current round
     });
 }
 
@@ -97,23 +119,30 @@ function handleCellClick(event) {
     if (!awaitingAnswer) return;
 
     const cell = event.target;
-    awaitingAnswer = false;
 
-    document.querySelectorAll('#game-grid div').forEach(c => c.onclick = null);
+    // Ignore clicks beyond the required number
+    if (clickCount >= cellCount) return;
 
-    clearTimeout(highlightTimeout);
-    activeCells.forEach(cell => cell.classList.remove('active'));
+    clickCount++; // Increment the click counter
 
+    // Check if the clicked cell is correct
     if (activeCells.includes(cell)) {
-        correctScore++;
+        activeCells = activeCells.filter(activeCell => activeCell !== cell); // Remove clicked cell from activeCells
+        correctScore++; // Increment score for correct click
     } else {
-        incorrectScore++;
+        incorrectScore++; // Increment score for incorrect click
     }
 
     updateScores();
-    activeCells = [];
 
-    newRoundTimeout = setTimeout(startGame, highlightDuration); // Use dynamic highlightDuration
+    // If all active cells have been clicked
+    if (clickCount === cellCount) {
+        awaitingAnswer = false; // Reset awaitingAnswer flag
+        document.querySelectorAll('#game-grid div').forEach(c => c.onclick = null);
+
+        clearTimeout(highlightTimeout); // Clear highlight timeout
+        newRoundTimeout = setTimeout(startGame, highlightDuration); // Start a new round
+    }
 }
 
 // Function to update scores
