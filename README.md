@@ -274,3 +274,55 @@ All instances of **setTimeout** now use **highlightDuration** instead of static 
 >highlightTimeout = setTimeout(() => { ... }, highlightDuration);
 
 >newRoundTimeout = setTimeout(startGame, highlightDuration);
+
+## Issue 5
+### When added Cell Count Slider logic, if set up is > 1 active cell, game doesn't wait for all cells clicked, but starts new game as soon as first click is done.
+### ✅ Known Issues and Fixes
+**Problem:** Game Starts Immediately After 1 Click (When More Clicks Are Needed).
+
+**Fix:**  Added a counter (clickCount) to track the number of clicks in each round. The game now waits for the exact number of required clicks before moving to the next round.
+
+**Problem:** Extra Clicks Counted as Incorrect Answers.
+Any clicks beyond the required (cellCount) were being counted as incorrect answers, disrupting gameplay.
+
+**Fix:** 
+Limited the number of clicks per round to the value of (cellCount). Additional clicks are now ignored until the next round begins.
+```let clickCount = 0; // Counter for player clicks in the current round
+
+// Increment counter and check clicks
+clickCount++;
+if (clickCount === cellCount) {
+    // All required clicks processed; proceed to next round
+}
+```
+**Problem:** Game Did Not Reset Properly on Grid or Cell Count Change.
+ Changing the grid size or active cell count did not always trigger a full reset, leading to overlaps and incorrect state handling.
+
+ **Fix:**
+ Ensured the game resets completely by clearing all active cells, timeouts, and click listeners whenever settings are updated.
+ ```
+ cells.forEach(cell => {
+    cell.classList.remove('active'); // Reset visual state
+});
+```
+
+ **Problem:** Stuck Active Cells.
+  Some cells occasionally remained visually highlighted ("stuck") even after a round ended.
+
+  **Fix:**
+  Explicitly removed all event listeners from cells during game resets and at the start of new rounds.
+  ```
+  awaitingAnswer = false;
+activeCells = [];
+clickCount = 0; // Ensure clean state for new round
+```
+
+  ### Additional Improvements:
+
+**Dynamic Highlight Duration:**
+Adjusted the highlight duration (highlightDuration) dynamically based on the slider settings, improving gameplay flexibility.
+```
+highlightDuration = 1100 - (sliderValue * 100); // Adjust duration dynamically
+```
+**Consistent State Management:**
+Improved handling of (awaitingAnswer) and other key state variables to ensure the game transitions smoothly between rounds.
