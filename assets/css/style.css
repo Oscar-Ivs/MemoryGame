@@ -55,3 +55,20 @@ body h1 {
 body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
+
+@media (max-width: 425px) {
+    .game-grid {
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
+        max-width: calc(100% - 30px); /* Ensures it doesn't exceed the viewport */
+        }
+    }
+
+    @media (max-width: 765px) {
+        .table {
+            width: 85%;
+            margin: auto; /* Center the slider */
+        }
+    }
