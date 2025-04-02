@@ -35,13 +35,6 @@ body h1 {
     transition: transform 0.1s ease-in-out, background-color 0.2s;
 }
 
-.hover-effect {
-    cursor: pointer;
-    background-color: #e3b7b7;
-    transform: scale(1.07);
-    transition: transform 0.1s ease-in-out, background-color 0.2s;
-}
-
 .container {
     margin-top: 1rem !important;
 }
