@@ -1,9 +1,10 @@
 let correctScore = 0;
 let incorrectScore = 0;
 let awaitingAnswer = false;
-let activeCell = null;
+let activeCell = []; //Support for multiple active cells
 let highlightTimeout = null;
 let newRoundTimeout = null;
+let cellCount = 1; // Default cell count
 
 // Default highlight duration
 let highlightDuration = 1000; // Starts at 1s
