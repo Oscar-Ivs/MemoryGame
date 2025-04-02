@@ -49,8 +49,6 @@ function updateGrid() {
         grid.appendChild(cell);
     }
 
-    correctScore = 0;
-    incorrectScore = 0;
     awaitingAnswer = false; // Explicitly reset
     updateScores();
 
