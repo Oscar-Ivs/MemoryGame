@@ -197,6 +197,14 @@ function updateScores() {
     document.getElementById("incorrect").textContent = incorrectScore;
 }
 
+// Score Reset button logic
+const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener("click", () => {
+    correctScore = 0;
+    incorrectScore = 0;
+    updateScores();
+});
+
 // Initialize grid and event listeners
 updateGrid();
 slider.addEventListener("input", updateGrid);
