@@ -6,15 +6,20 @@ let clickCount = 0; // Counter for player clicks in the current round
 let highlightTimeout = null;
 let newRoundTimeout = null;
 let cellCount = 1; // Default cell count
+let isExpertMode = false; // Advanced mode state
+let highlightedOrder = []; // Stores the sequential order of highlighted cells
 
-// Default highlight duration
-let highlightDuration = 1000; // Starts at 1s
+
+let highlightDuration = 1000; // Starts at 1s, default value for the time slider
 
 // DOM elements
 const slider = document.getElementById('grid-slider');
 const grid = document.getElementById('game-grid');
 const timeSlider = document.getElementById('time-slider');
 const countSlider = document.getElementById('count-slider');
+const expertCheckbox = document.getElementById('expert-mode');
+
+
 
 // Time Slider logic to update highlightDuration dynamically
 timeSlider.addEventListener('input', () => {
@@ -22,7 +27,7 @@ timeSlider.addEventListener('input', () => {
     document.getElementById('time-value').textContent = sliderValue; // Display the value
 
     // Reverse mapping: Max slider value - current slider value (e.g., 1 -> 1000ms, 10 -> 100ms)
-    highlightDuration = 1100 - (sliderValue * 100); // Adjust to match desired range
+    highlightDuration = 1100 - (sliderValue * 100);
 });
 
 // Cell Count Slider logic to update the number of highlighted cells
