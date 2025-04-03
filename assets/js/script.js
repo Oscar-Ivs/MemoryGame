@@ -118,16 +118,43 @@ function startGame() {
     }
   }
 
-  awaitingAnswer = true;
+  // Expert Mode: Highlight cells in a sequential order
+  if (isExpertMode) {
+    // Highlight cells one by one in sequence
+    let index = 0;
+    const highlightNextCell = () => {
+        if (index < activeCells.length) {
+            const cell = activeCells[index];
+            highlightedOrder.push(cell); // Track the order
+            cell.classList.add('active');
+            setTimeout(() => cell.classList.remove('active'), highlightDuration); // Remove highlight after duration
+            index++;
+            setTimeout(highlightNextCell, highlightDuration); // Schedule the next cell highlight
+        } else {
+            // After highlighting, enable user interaction
+            awaitingAnswer = true;
+            cells.forEach(cell => {
+                cell.onclick = handleCellClick; // Attach event listeners for the current round
+          });
+      }
+    };
+  }
+  highlightNextCell();
+} else {
+    // Standard mode: Highlight all cells at once
+    activeCells.forEach(cell => {
+        cell.classList.add('active');
+    });
 
-  highlightTimeout = setTimeout(() => {
-    activeCells.forEach((cell) => cell.classList.remove("active")); // Clear active state after highlight
-  }, highlightDuration); // Use dynamic highlightDuration
-
-  cells.forEach((cell) => {
-    cell.onclick = handleCellClick; // Attach event listeners for the current round
-  });
+    highlightTimeout = setTimeout(() => {
+        activeCells.forEach(cell => cell.classList.remove('active'));
+        awaitingAnswer = true;
+        cells.forEach(cell => {
+            cell.onclick = handleCellClick;
+        });
+    }, highlightDuration);
 }
+
 
 // Function handling cell clicks
 function handleCellClick(event) {
