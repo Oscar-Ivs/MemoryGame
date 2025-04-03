@@ -56,6 +56,12 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+#reset-button {
+    font-size: 0.875rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 @media (max-width: 425px) {
     .game-grid {
         padding-left: 15px;
