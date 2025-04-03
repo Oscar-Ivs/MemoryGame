@@ -205,3 +205,12 @@ function updateScores() {
 // Initialize grid and event listeners
 updateGrid();
 slider.addEventListener("input", updateGrid);
+
+// Set correct Expert Mode checkbox initial state
+if (cellCount <= 1) {
+    expertCheckbox.disabled = true;
+    expertCheckbox.checked = false;
+    isExpertMode = false;
+} else {
+    expertCheckbox.disabled = false;
+}
