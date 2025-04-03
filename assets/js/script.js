@@ -118,7 +118,7 @@ function startGame() {
             activeCells.push(randomCell);
         }
     }
-    // Expert Mode: Highlight cells in a sequential order
+// Expert Mode: Highlight cells in a sequential order
     if (isExpertMode) {
         // Highlight cells one by one in sequence
         let index = 0;
