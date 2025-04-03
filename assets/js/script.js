@@ -217,3 +217,9 @@ if (cellCount <= 1) {
 } else {
     expertCheckbox.disabled = false;
 }
+
+// New game button logic
+const newGameButton = document.getElementById("new-game-button");
+newGameButton.addEventListener("click", () => {
+    resetGame(); // Restart the game without affecting score or slider values
+});
