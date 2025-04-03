@@ -327,3 +327,23 @@ highlightDuration = 1100 - (sliderValue * 100); // Adjust duration dynamically
 ```
 **Consistent State Management:**
 Improved handling of (awaitingAnswer) and other key state variables to ensure the game transitions smoothly between rounds.
+
+## Issue 6
+### Advanced Mode checkbox is not disabled when Cell Count Slider value = 1
+### 🔍 Testing & Findings
+The issue is caused because the checkbox initially isn't explicitly disabled if the initial cell count is 1 on page load. It looks like it correctly handle it when the slider changes, but not initially.
+
+**Fix:**
+Explicitly set the initial checkbox state after initializing the grid (at the end of the code).
+
+Added these lines just after updateGrid():
+```javascript
+// Initialize Expert Mode checkbox state correctly on page load
+if (cellCount <= 1) {
+    expertCheckbox.disabled = true;
+    expertCheckbox.checked = false;
+    isExpertMode = false;
+} else {
+    expertCheckbox.disabled = false;
+}
+```
