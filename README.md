@@ -347,3 +347,30 @@ if (cellCount <= 1) {
     expertCheckbox.disabled = false;
 }
 ```
+## Issue 7
+### clicks during the highlighting phase are not properly processed and counted.
+### 🔍 Testing & Findings
+**Problem:**
+1. Current Logic: The variable (awaitingAnswer) is only set to (true) after all cells have been highlighted. This prevents clicks during the highlighting phase from being registered.
+2. Highlighting and Interaction Overlap: The click handling relies on (awaitingAnswer), which delays interaction until the highlighting process completes.
+**Fix:** 
+Set (awaitingAnswer = true) before the highlighting process starts.
+Allow the click handler to process clicks during highlighting by not relying on the highlighting being completed.
+### Key Fixes:
+
+1. **(awaitingAnswer) Set Early:**
+(awaitingAnswer) is now set to (true) before highlighting starts, allowing the click handler to process clicks during highlighting.
+```javascript
+// Enable clicks immediately
+awaitingAnswer = true;
+```
+Event listeners () are attached at the start of the round, enabling interaction with cells even while they are highlighted.
+
+2. **Enabled Immediate Interaction:**
+Event listeners (onclick) are attached at the start of the round, enabling interaction with cells even while they are highlighted.
+```javascript
+// Attach event listeners immediately to allow clicks during highlighting
+cells.forEach((cell) => {
+    cell.onclick = handleCellClick; // Attach event listeners for the current round
+});
+```
