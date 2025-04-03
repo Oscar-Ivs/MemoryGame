@@ -34,6 +34,17 @@ timeSlider.addEventListener('input', () => {
 countSlider.addEventListener('input', () => {
     cellCount = parseInt(countSlider.value); // Update the cell count
     document.getElementById('theme-value').textContent = cellCount;
+
+    
+    // Enable or disable Advanced Mode checkbox based on cell count
+    if (cellCount > 1) {
+        expertCheckbox.disabled = false;
+    } else {
+        expertCheckbox.disabled = true;
+        expertCheckbox.checked = false;
+        isExpertMode = false;
+
+    }
     resetGame(); // Restart the game when cell count changes
 });
 
