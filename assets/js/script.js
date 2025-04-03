@@ -34,11 +34,11 @@ countSlider.addEventListener("input", () => {
 
     // Enable or disable Advanced Mode checkbox based on cell count
     if (cellCount > 1) {
-        expertCheckbox.disabled = false;
+        expertCheckbox.disabled = false; // Enable checkbox
     } else {
-        expertCheckbox.disabled = true;
-        expertCheckbox.checked = false;
-        isExpertMode = false;
+        expertCheckbox.disabled = true; // Disable checkbox
+        expertCheckbox.checked = false; // Uncheck the checkbox
+        isExpertMode = false; // Force Expert Mode off
     }
     resetGame(); // Restart the game when cell count changes
 });
@@ -96,8 +96,6 @@ function startGame() {
     clearTimeout(highlightTimeout);
     clearTimeout(newRoundTimeout);
 
-    if (awaitingAnswer) return;
-
     const cells = document.querySelectorAll("#game-grid div");
     if (cells.length === 0) return;
 
@@ -118,40 +116,37 @@ function startGame() {
             activeCells.push(randomCell);
         }
     }
-// Expert Mode: Highlight cells in a sequential order
-    if (isExpertMode) {
-        // Highlight cells one by one in sequence
+
+    // Enable clicks immediately
+    awaitingAnswer = true;
+
+    // Attach event listeners immediately to allow clicks during highlighting
+    cells.forEach((cell) => {
+        cell.onclick = handleCellClick; // Attach event listeners for the current round
+    });
+
+    // Expert Mode: Highlight cells in a sequential order
+    if (isExpertMode && cellCount > 1) {
         let index = 0;
-        const highlightNextCell = () => {
+        const highlightCellsSequentially = () => {
             if (index < activeCells.length) {
                 const cell = activeCells[index];
                 highlightedOrder.push(cell); // Track the order
-                cell.classList.add('active');
-                setTimeout(() => cell.classList.remove('active'), highlightDuration); // Remove highlight after duration
+                cell.classList.add("active");
+                setTimeout(() => cell.classList.remove("active"), highlightDuration); // Remove highlight after duration
                 index++;
-                setTimeout(highlightNextCell, highlightDuration); // Schedule the next cell highlight
-            } else {
-                // After highlighting, enable user interaction
-                awaitingAnswer = true;
-                cells.forEach(cell => {
-                    cell.onclick = handleCellClick; // Attach event listeners for the current round
-                });
+                setTimeout(highlightCellsSequentially, highlightDuration); // Schedule the next cell highlight
             }
         };
-        // Start highlighting cells in sequence
-        highlightNextCell();
+        highlightCellsSequentially();
     } else {
         // Standard mode: Highlight all cells at once
-        activeCells.forEach(cell => {
-            cell.classList.add('active');
+        activeCells.forEach((cell) => {
+            cell.classList.add("active");
         });
 
         highlightTimeout = setTimeout(() => {
-            activeCells.forEach(cell => cell.classList.remove('active'));
-            awaitingAnswer = true;
-            cells.forEach(cell => {
-                cell.onclick = handleCellClick;
-            });
+            activeCells.forEach((cell) => cell.classList.remove("active"));
         }, highlightDuration);
     }
 }
