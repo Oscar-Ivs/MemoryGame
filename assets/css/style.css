@@ -13,6 +13,8 @@ body h1 {
     grid-gap: 5px;
     max-width: 440px;
     margin: 0 auto;
+    padding-bottom: 20px;
+    padding-top: 0;
 }
 
 .game-grid div {
@@ -56,10 +58,14 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
+.score-area {
+    margin-top: 0;
+}
+
 #reset-button {
     font-size: 0.875rem;
     padding: 5px 10px;
-    margin-top: 15px;
+    margin-bottom: 28px;
     border-radius: 5px;
 }
 
@@ -77,5 +83,6 @@ body {
         .table {
             width: 85%;
             margin: auto; /* Center the slider */
+            padding-bottom: 20px;
         }
     }
