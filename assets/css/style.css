@@ -58,16 +58,6 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-.score-area {
-    margin-top: 0;
-}
-
-#reset-button {
-    font-size: 0.875rem;
-    padding: 5px 10px;
-    margin-bottom: 28px;
-    border-radius: 5px;
-}
 
 
 @media (max-width: 425px) {
