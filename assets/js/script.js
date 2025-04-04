@@ -197,12 +197,13 @@ function updateScores() {
     document.getElementById("incorrect").textContent = incorrectScore;
 }
 
-// Score Reset button logic
-const resetButton = document.getElementById("reset-button");
-resetButton.addEventListener("click", () => {
+// New game button logic
+const newGameButton = document.getElementById("new-game-button");
+newGameButton.addEventListener("click", () => {
     correctScore = 0;
     incorrectScore = 0;
-    updateScores();
+    updateScores(); // Reset scores on new game
+    resetGame(); // Start a new game
 });
 
 // Initialize grid and event listeners
@@ -217,9 +218,3 @@ if (cellCount <= 1) {
 } else {
     expertCheckbox.disabled = false;
 }
-
-// New game button logic
-const newGameButton = document.getElementById("new-game-button");
-newGameButton.addEventListener("click", () => {
-    resetGame(); // Restart the game without affecting score or slider values
-});
