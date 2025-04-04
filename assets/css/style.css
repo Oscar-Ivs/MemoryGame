@@ -59,6 +59,12 @@ body h1 {
     cursor: not-allowed; /* Change cursor to indicate disabled state */
 }
 
+#expert-slider.off {
+    opacity: 0.4;
+    transition: opacity 0.5s; /* Smooth transition for opacity change */
+
+}
+
 body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }

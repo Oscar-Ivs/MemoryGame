@@ -57,11 +57,16 @@ function updateExpertMode(value) {
     if (value === "1") {
         isExpertMode = true; // Enable Expert Mode
         expertValue.textContent = "ON"; // Update display
+        expertSlider.classList.remove("off");
+        expertSlider.classList.add("on");
     } else {
         isExpertMode = false; // Disable Expert Mode
         expertValue.textContent = "OFF"; // Update display
+        expertSlider.classList.remove("on");
+        expertSlider.classList.add("off");
     }
 }
+
 
 // Add listener to the expert mode slider (TOGGLE ON ANY CLICK)
 expertSlider.addEventListener("click", () => {
