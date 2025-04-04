@@ -16,7 +16,8 @@ const slider = document.getElementById("grid-slider");
 const grid = document.getElementById("game-grid");
 const timeSlider = document.getElementById("time-slider");
 const countSlider = document.getElementById("count-slider");
-const expertCheckbox = document.getElementById("expert-mode");
+const expertSlider = document.getElementById("expert-slider");
+const expertValue = document.getElementById("expert-value");
 
 // Time Slider logic to update highlightDuration dynamically
 timeSlider.addEventListener("input", () => {
@@ -43,11 +44,18 @@ countSlider.addEventListener("input", () => {
     resetGame(); // Restart the game when cell count changes
 });
 
-// Advanced Mode Checkbox Logic
-expertCheckbox.addEventListener("change", () => {
-    isExpertMode = expertCheckbox.checked;
-    resetGame(); // Restart the game with Advanced Mode applied
-});
+//Expert Mode Slider logic
+function updateExpertMode() {
+    if (value == "1") {
+        isExpertMode = true; // Enable Expert Mode
+        expertValue.textContent = "ON"; // Update display
+    }
+    else {
+        isExpertMode = false; // Disable Expert Mode
+        expertValue.textContent = "OFF"; // Update display
+    }
+    expertSlider.addEventListener("input", () => updateExpertMode(expertSlider.value)); // Update Expert Mode state on slider change
+}
 
 // Function to update the grid layout dynamically
 function updateGrid() {
