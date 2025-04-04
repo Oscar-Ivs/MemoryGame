@@ -65,6 +65,8 @@ function updateExpertMode(value) {
         expertSlider.classList.remove("on");
         expertSlider.classList.add("off");
     }
+    // Automatically start a new game whenever Expert Mode is toggled
+    resetGame();
 }
 
 
