@@ -58,13 +58,15 @@ body {
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-#reset-button {
+#new-game-button {
     font-size: 0.875rem;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 18px;
 }
 
-
+.score-area p {
+    text-align:end;
+}
 @media (max-width: 425px) {
     .game-grid {
         padding-left: 15px;
