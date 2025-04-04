@@ -56,12 +56,12 @@ if (cellCount <= 1) {
 function updateExpertMode(value) {
     if (value === "1") {
         isExpertMode = true; // Enable Expert Mode
-        expertValue.textContent = "ON"; // Update display
+        expertValue.innerHTML = "<strong>ON</strong>"; // Make text bold
         expertSlider.classList.remove("off");
         expertSlider.classList.add("on");
     } else {
         isExpertMode = false; // Disable Expert Mode
-        expertValue.textContent = "OFF"; // Update display
+        expertValue.innerHTML = "<strong>OFF</strong>"; // Make text bold
         expertSlider.classList.remove("on");
         expertSlider.classList.add("off");
     }
