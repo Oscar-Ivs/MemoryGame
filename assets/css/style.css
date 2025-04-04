@@ -69,9 +69,6 @@ body {
     border-radius: 5px;
 }
 
-.help-icon {
-    size: 200%;
-}
 
 @media (max-width: 425px) {
     .game-grid {
