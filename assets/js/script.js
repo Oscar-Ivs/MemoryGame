@@ -33,29 +33,32 @@ countSlider.addEventListener("input", () => {
     cellCount = parseInt(countSlider.value); // Update the cell count
     document.getElementById("theme-value").textContent = cellCount;
 
-    // Enable or disable Advanced Mode checkbox based on cell count
+    // Enable or disable Expert Mode slider based on cell count
     if (cellCount > 1) {
-        expertCheckbox.disabled = false; // Enable checkbox
-    } else {
-        expertCheckbox.disabled = true; // Disable checkbox
-        expertCheckbox.checked = false; // Uncheck the checkbox
-        isExpertMode = false; // Force Expert Mode off
+        expertSlider.disabled = false; // Enable Expert Mode slider
     }
+    else {
+        expertSlider.disabled = true; // Disable Expert Mode slider
+        expertSlider.value = "0"; // Reset Expert Mode slider to OFF
+        updateExpertMode("0"); // Update display to OFF
+    }
+
     resetGame(); // Restart the game when cell count changes
 });
 
-//Expert Mode Slider logic
-function updateExpertMode() {
-    if (value == "1") {
+// Expert Mode Slider logic
+function updateExpertMode(value) {
+    if (value === "1") {
         isExpertMode = true; // Enable Expert Mode
         expertValue.textContent = "ON"; // Update display
-    }
-    else {
+    } else {
         isExpertMode = false; // Disable Expert Mode
         expertValue.textContent = "OFF"; // Update display
     }
-    expertSlider.addEventListener("input", () => updateExpertMode(expertSlider.value)); // Update Expert Mode state on slider change
 }
+
+// Add listener to the expert mode slider
+expertSlider.addEventListener("input", () => updateExpertMode(expertSlider.value));
 
 // Function to update the grid layout dynamically
 function updateGrid() {
@@ -148,7 +151,7 @@ function startGame() {
         };
         highlightCellsSequentially();
     } else {
-        // Standard mode: Highlight all cells at once
+       // Standard mode: Highlight all cells at once
         activeCells.forEach((cell) => {
             cell.classList.add("active");
         });
@@ -218,11 +221,5 @@ newGameButton.addEventListener("click", () => {
 updateGrid();
 slider.addEventListener("input", updateGrid);
 
-// Set correct Expert Mode checkbox initial state
-if (cellCount <= 1) {
-    expertCheckbox.disabled = true;
-    expertCheckbox.checked = false;
-    isExpertMode = false;
-} else {
-    expertCheckbox.disabled = false;
-}
+// Set initial Expert Mode state AFTER event listener is defined
+updateExpertMode("0");
