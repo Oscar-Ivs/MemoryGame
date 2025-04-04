@@ -63,11 +63,17 @@ function updateExpertMode(value) {
     }
 }
 
-// Add listener to the expert mode slider (BEFORE initialization)
-expertSlider.addEventListener("input", () => updateExpertMode(expertSlider.value));
+// Add listener to the expert mode slider (TOGGLE ON ANY CLICK)
+expertSlider.addEventListener("click", () => {
+    if (cellCount > 1) { // Only allow toggling when Cell Count > 1
+        // Toggle between "0" and "1"
+        expertSlider.value = expertSlider.value === "0" ? "1" : "0";
+        updateExpertMode(expertSlider.value); // Update the expert mode status
+    }
+});
 
-// Set initial Expert Mode state AFTER event listener is defined
-expertSlider.value = "0"; // Default to OFF
+// Ensure slider starts at OFF when the game loads
+expertSlider.value = "0";
 updateExpertMode("0");
 
 // Function to update the grid layout dynamically
