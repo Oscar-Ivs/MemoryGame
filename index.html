@@ -45,53 +45,45 @@
             <!-- User options and sliders -->
 <div class="col-12 col-md-3 col-lg-2" id="user-options" style="display: flex; flex-direction: column; align-items: center;">
 
-                <table>
     <!-- Help button -->
     <div class="help mb-3">
         <img src="assets/images/help.png" alt="Help" class="help-icon" data-bs-toggle="modal" data-bs-target="#helpModal" style="cursor: pointer; width: 114px; height: 108px;">
     </div>
-                    </tr>
-                    <tbody>
-                        <td></td>
-                    <tr>
-                        <td>
-                            <label for="grid-slider" class="form-label"><strong>Grid Size</strong>: <span id="slider-value">4</span></label>
-                            <input type="range" class="form-control-range w-100" id="grid-slider" min="4" max="15" value="4" oninput="document.getElementById('slider-value').textContent = this.value">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="time-slider" class="form-label"><strong>Speed Control</strong>: <span id="time-value">1</span></label>
-                            <input type="range" class="form-control-range w-100" id="time-slider" min="1" max="10" value="1" oninput="document.getElementById('time-value').textContent = this.value">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="count-slider" class="form-label"><strong>Cell Count</strong>: <span id="theme-value">1</span></label>
-                            <input type="range" class="form-control-range w-100" id="count-slider" min="1" max="4" value="1" oninput="document.getElementById('theme-value').textContent = this.value">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <label for="expert-mode" class="form-label me-2"><strong>Expert Mode</strong>:</label>
-                                    <input class="form-check-input mt-0" type="checkbox" id="expert-mode" value="" aria-label="Checkbox for following text input">
-                                </div>
-                                <button id="new-game-button" class="btn btn-outline-success btn-sm ms-3">New Game</button>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                    
-                </tbody>
-                    </table>
-                
-                
-                
-            </div>
-        </div>
-    </div>
+
+<table class="table">
+    <tbody>
+        <tr style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
+            <td>
+                <label for="grid-slider" class="form-label"><strong>Grid Size</strong>: <span id="slider-value">4</span></label>
+                <input type="range" class="form-control-range w-100" id="grid-slider" min="4" max="15" value="4" oninput="document.getElementById('slider-value').textContent = this.value">
+            </td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td>
+                <label for="time-slider" class="form-label"><strong>Speed Control</strong>: <span id="time-value">1</span></label>
+                <input type="range" class="form-control-range w-100" id="time-slider" min="1" max="10" value="1" oninput="document.getElementById('time-value').textContent = this.value">
+            </td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td>
+                <label for="count-slider" class="form-label"><strong>Cell Count</strong>: <span id="theme-value">1</span></label>
+                <input type="range" class="form-control-range w-100" id="count-slider" min="1" max="4" value="1" oninput="document.getElementById('theme-value').textContent = this.value">
+            </td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+            <td>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <label for="expert-mode" class="form-label me-2"><strong>Expert Mode</strong>:</label>
+                        <input class="form-check-input mt-0" type="checkbox" id="expert-mode" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <button id="new-game-button" class="btn btn-outline-success btn-sm ms-3">New Game</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
     <script src="assets/js/script.js"></script>
 </body>
