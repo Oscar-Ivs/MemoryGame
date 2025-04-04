@@ -67,16 +67,13 @@
                 <input type="range" class="form-control-range w-100" id="count-slider" min="1" max="4" value="1" oninput="document.getElementById('theme-value').textContent = this.value">
             </td>
         </tr>
-        <tr style="border-bottom: 1px solid #ddd;">
+        <tr>
             <td>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex align-items-center">
-                        <label for="expert-mode" class="form-label me-2"><strong>Expert Mode</strong>:</label>
-                        <input class="form-check-input mt-0" type="checkbox" id="expert-mode" value="" aria-label="Checkbox for following text input">
-                    </div>
-                </div>
+                <label for="expert-slider" class="form-label"><strong>Expert Mode</strong>: <span id="expert-value">OFF</span></label>
+                <input type="range" class="form-control-range w-100" id="expert-slider" min="0" max="1" value="0" oninput="updateExpertMode(this.value)">
             </td>
         </tr>
+        
     </tbody>
 </table>
 
