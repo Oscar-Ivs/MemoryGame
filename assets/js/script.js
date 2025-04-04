@@ -45,6 +45,13 @@ countSlider.addEventListener("input", () => {
     resetGame(); // Restart the game when cell count changes
 });
 
+// Initialize Expert Mode slider state on load
+if (cellCount <= 1) {
+    expertSlider.disabled = true; // Ensure it starts disabled if cell count is 1
+    expertSlider.value = "0";
+    updateExpertMode("0");
+}
+
 // Expert Mode Slider logic
 function updateExpertMode(value) {
     if (value === "1") {

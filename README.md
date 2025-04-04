@@ -374,3 +374,20 @@ cells.forEach((cell) => {
     cell.onclick = handleCellClick; // Attach event listeners for the current round
 });
 ```
+## Issue 8
+### The Expert Mode Slider is not disabled when Cell Count = 1
+**Problem:**
+1. The slider might not be disabled because the (expertSlider) element is not properly referenced or initialized.
+2. The event listener might be attached after initialization or not properly updating the slider state.
+
+**Fix:**
+
+Update the logic so that the slider is properly disabled and checked during initialization and whenever the cell count changes.
+```javascript
+// Initialize Expert Mode slider state on load
+if (cellCount <= 1) {
+    expertSlider.disabled = true; // Ensure it starts disabled if cell count is 1
+    expertSlider.value = "0";
+    updateExpertMode("0");
+}
+```
