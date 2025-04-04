@@ -36,8 +36,7 @@ countSlider.addEventListener("input", () => {
     // Enable or disable Expert Mode slider based on cell count
     if (cellCount > 1) {
         expertSlider.disabled = false; // Enable Expert Mode slider
-    }
-    else {
+    } else {
         expertSlider.disabled = true; // Disable Expert Mode slider
         expertSlider.value = "0"; // Reset Expert Mode slider to OFF
         updateExpertMode("0"); // Update display to OFF
@@ -57,8 +56,12 @@ function updateExpertMode(value) {
     }
 }
 
-// Add listener to the expert mode slider
+// Add listener to the expert mode slider (BEFORE initialization)
 expertSlider.addEventListener("input", () => updateExpertMode(expertSlider.value));
+
+// Set initial Expert Mode state AFTER event listener is defined
+expertSlider.value = "0"; // Default to OFF
+updateExpertMode("0");
 
 // Function to update the grid layout dynamically
 function updateGrid() {
@@ -220,6 +223,3 @@ newGameButton.addEventListener("click", () => {
 // Initialize grid and event listeners
 updateGrid();
 slider.addEventListener("input", updateGrid);
-
-// Set initial Expert Mode state AFTER event listener is defined
-updateExpertMode("0");
