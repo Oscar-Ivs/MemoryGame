@@ -19,6 +19,54 @@ Responsive Design: Enjoy smooth gameplay across devices (desktop, tablet, mobile
 Game Instructions: Easily accessible, clear instructions guide new players through gameplay and customization options.
 
 This Memory Game combines simplicity with flexibility, ensuring it’s accessible for beginners while still providing challenging gameplay for advanced players.
+
+# 📌 Memory Game - Rules
+## 🎯 Objective
+
+The goal of the game is to accurately remember and click on highlighted cells.
+⚙️ Game Options
+
+You can customize the game's difficulty and experience:
+
+    Grid Size: Adjust the size of the game grid (from 4x4 up to 15x15) to increase complexity.
+
+    Speed Control: Adjust the duration for which cells stay highlighted (100ms to 1000ms).
+
+    Cell Count: Choose how many cells (1 to 4) will be highlighted each round.
+
+    Expert Mode: When enabled, cells highlight sequentially rather than simultaneously. You must remember not only the location of highlighted cells but also the order in which they were highlighted.
+    (Note: Expert Mode becomes available only when Cell Count is set to 2 or more.)
+
+## 🧩 How to Play
+
+    Set your preferred Grid Size, Speed, and Cell Count using the provided sliders.
+
+    Toggle Expert Mode ON or OFF to change game behavior.
+
+    Press "New Game" to start or restart the game.
+
+    Watch carefully as cells become highlighted:
+
+        Standard Mode: Cells highlight simultaneously.
+
+        Expert Mode: Cells highlight one after another in sequence.
+
+    After cells finish highlighting, click on the cells you remember:
+
+        Standard Mode: Click highlighted cells in any order.
+
+        Expert Mode: You must click highlighted cells in the exact order they appeared.
+
+    The game tracks your correct and incorrect answers, displayed clearly at the top.
+
+## 🎖️ Scoring
+
+    Correct answers increase your correct score.
+
+    Incorrect answers increase your incorrect score.
+
+    You can reset your score anytime by clicking "New Game".
+    
 # User Stories
 
 ## User Story 1: Dynamic Grid Size Adjustment (Must-Have)
