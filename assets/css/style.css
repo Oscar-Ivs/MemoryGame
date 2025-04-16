@@ -37,6 +37,10 @@ body h1 {
     transition: transform 0.1s ease-in-out, background-color 0.2s;
 }
 
+#user-options {
+    margin-top: -20px;
+}
+
 .container {
     margin-top: 1rem !important;
 }
@@ -92,5 +96,9 @@ body {
             width: 85%;
             margin: auto; /* Center the slider */
             padding-bottom: 20px;
+        }
+        #user-options {
+            width: 90%;
+            margin:auto;
         }
     }
