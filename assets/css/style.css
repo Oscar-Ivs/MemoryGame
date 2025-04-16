@@ -4,7 +4,8 @@ body h1 {
 }
 
 .text-center {
-    margin-top: 45px;
+    margin-top: 55px;
+    margin-bottom: -20px;
 }
 
 .game-grid {
@@ -91,6 +92,34 @@ body {
         }
     }
 
+
+    /* Animation */
+
+#animated-title {
+    display: inline-block;
+    position: relative;
+    font-family: 'Limelight', cursive;
+  }
+  
+  #animated-title span {
+    display: inline-block;
+    position: relative;
+    font-size: 48px;
+  }
+  
+  #ball {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  
     @media (max-width: 765px) {
         .table {
             width: 85%;
