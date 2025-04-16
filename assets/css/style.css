@@ -60,7 +60,8 @@ body h1 {
 }
 
 #expert-slider:disabled {
-    opacity: 0.2; /* Make the slider less visible when disabled */
+    background: grey;
+    opacity: 0.4;
     cursor: not-allowed; /* Change cursor to indicate disabled state */
 }
 
