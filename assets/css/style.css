@@ -118,6 +118,7 @@ body {
     pointer-events: none;
     z-index: 10;
   }
+  
 
   
     @media (max-width: 765px) {
@@ -130,6 +131,9 @@ body {
             width: 90%;
             margin:auto;
         }
+        #animated-title span {
+            font-size: 85%;
+          }
     }
 
     @media (min-width: 766px) {
