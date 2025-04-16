@@ -439,3 +439,92 @@ if (cellCount <= 1) {
     updateExpertMode("0");
 }
 ```
+# 3rd party code.
+## Animation - bouncing ball.
+
+Replaced:
+```javascript
+<h1 class="text-center">Memory Game</h1>
+```
+With:
+``` javascript
+<div class="text-center">
+        <h1 id="animated-title"></h1>
+        <div id="ball"></div>
+      </div>
+```
+Created animation.js file and copied code:
+``` javascript
+// animation.js
+
+// Insert letters into #animated-title with span wrappers
+const titleText = "Memory Game";
+const titleContainer = document.getElementById("animated-title");
+titleText.split("").forEach(char => {
+  const span = document.createElement("span");
+  span.textContent = char === " " ? "\u00A0" : char;
+  titleContainer.appendChild(span);
+});
+
+const ball = document.getElementById("ball");
+const letters = document.querySelectorAll("#animated-title span");
+
+const animateBall = async () => {
+  while (true) {
+    for (const letter of letters) {
+      const rect = letter.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const scrollLeft = window.scrollX || window.pageXOffset;
+
+      const ballX = rect.left + scrollLeft + rect.width / 2 - 10;
+      const ballY = rect.top + scrollTop - 30;
+
+      await anime({
+        targets: ball,
+        left: ballX + "px",
+        top: ballY + "px",
+        duration: 500,
+        easing: "easeOutBounce"
+      }).finished;
+
+      await anime({
+        targets: ball,
+        translateY: [
+          { value: -20, duration: 250, easing: "easeOutCubic" },
+          { value: 0, duration: 250, easing: "easeInCubic" }
+        ]
+      }).finished;
+    }
+  }
+};
+
+animateBall();
+```
+Added CSS style:
+``` javascript
+/* style.css */
+
+#animated-title {
+  display: inline-block;
+  position: relative;
+  font-family: 'Limelight', cursive;
+}
+
+#animated-title span {
+  display: inline-block;
+  position: relative;
+  font-size: 48px;
+}
+
+#ball {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+```
