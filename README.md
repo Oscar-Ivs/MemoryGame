@@ -528,3 +528,39 @@ Added CSS style:
   z-index: 10;
 }
 ```
+# Deployment
+
+The project has been deployed using GitHub Pages, providing a live and accessible URL for public access.
+
+## Steps I done for Deployment:
+
+### 1. Pushed my Code to GitHub
+
+Ensured that project is fully functional and tested locally, then pushed my final code to main GitHub repository:
+
+git add .
+git commit -m "Finalized version before deployment"
+git push origin main
+
+### 2. Activated GitHub Pages
+
+Navigate to my repository: https://github.com/Oscar-Ivs/MemoryGame
+
+Get to Settings → Pages.
+
+Under the Branch section, selected my deployment branch (main) and set the directory to root.
+
+Clicked Save to activate GitHub Pages.
+
+### 3. Verified Deployment
+
+GitHub Pages will automatically deployed my website.
+
+My live website URL appeared in the Pages settings area.
+https://oscar-ivs.github.io/MemoryGame/
+
+Visit my URL to confirm the deployment.
+
+
+## **Contact Information**
+For more information please contact at [hk57agob@students.codeinstitute.net](hk57agob@students.codeinstitute.net)
