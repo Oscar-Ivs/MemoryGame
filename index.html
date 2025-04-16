@@ -49,6 +49,78 @@
          style="cursor: pointer; width: 114px; height: 108px;">
 </div>
 
+<!-- Game Play Help -->
+<div class="container my-5">
+    <div class="accordion" id="rulesAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="objectiveHeading">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#objectiveContent" aria-expanded="true" aria-controls="objectiveContent">
+                    🎯 Objective
+                </button>
+            </h2>
+            <div id="objectiveContent" class="accordion-collapse collapse show" aria-labelledby="objectiveHeading" data-bs-parent="#rulesAccordion">
+                <div class="accordion-body">
+                    The goal of the game is to accurately remember and click on highlighted cells.
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="optionsHeading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#optionsContent" aria-expanded="false" aria-controls="optionsContent">
+                    ⚙️ Game Options
+                </button>
+            </h2>
+            <div id="optionsContent" class="accordion-collapse collapse" aria-labelledby="optionsHeading" data-bs-parent="#rulesAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>Grid Size: Adjust the size of the game grid (from 4x4 up to 15x15).</li>
+                        <li>Speed Control: Adjust the duration for which cells stay highlighted (100ms to 1000ms).</li>
+                        <li>Cell Count: Choose how many cells (1 to 4) will be highlighted each round.</li>
+                        <li>Expert Mode: Highlights cells sequentially rather than simultaneously.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="playHeading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#playContent" aria-expanded="false" aria-controls="playContent">
+                    🧩 How to Play
+                </button>
+            </h2>
+            <div id="playContent" class="accordion-collapse collapse" aria-labelledby="playHeading" data-bs-parent="#rulesAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>Set your preferred Grid Size, Speed, and Cell Count using sliders.</li>
+                        <li>Toggle Expert Mode ON/OFF to change game behavior.</li>
+                        <li>Press "New Game" to start/restart the game.</li>
+                        <li>Watch carefully as cells become highlighted.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="scoringHeading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#scoringContent" aria-expanded="false" aria-controls="scoringContent">
+                    🎖️ Scoring
+                </button>
+            </h2>
+            <div id="scoringContent" class="accordion-collapse collapse" aria-labelledby="scoringHeading" data-bs-parent="#rulesAccordion">
+                <div class="accordion-body">
+                    <ul>
+                        <li>Correct answers increase your correct score.</li>
+                        <li>Incorrect answers increase your incorrect score.</li>
+                        <li>You can reset your score anytime by clicking "New Game."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <table class="table">
     <tbody>
         <tr style="border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;">
