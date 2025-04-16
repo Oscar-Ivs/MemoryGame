@@ -102,3 +102,9 @@ body {
             margin:auto;
         }
     }
+
+    @media (min-width: 766px) {
+        #user-options {
+            width: 25%;
+        }
+    }
