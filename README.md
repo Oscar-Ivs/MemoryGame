@@ -171,13 +171,13 @@ You can customize the game's difficulty and experience:
 # Wireframes:
 
 ### Desktop version
-![Desktop Wireframe](assets\images\wireframes\Desktop.png)
+![Desktop Wireframe](assets/images/wireframes/Desktop.png)
 
 ### Tablet version
-![Tablet Wireframe](assets\images\wireframes\Tablet.png)
+![Tablet Wireframe](assets/images/wireframes/Tablet.png)
 
 ### Mobile version
-![Mobile Wireframe](assets\images\wireframes\Mobile.png)
+![Mobile Wireframe](assets/images/wireframes/Mobile.png)
 
 ## 🐞 Bug Fix: Preventing Multiple Clicks and Timer Overlaps
 
