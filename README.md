@@ -539,6 +539,47 @@ Added CSS style:
   z-index: 10;
 }
 ```
+
+# ✅ Testing
+
+### Functional Testing
+
+The game was manually tested on the following browsers:
+
+- ✅ Chrome (Desktop, Mobile)
+- ✅ Firefox
+- ✅ Edge
+
+**Tested Features:**
+
+- Changing Grid Size dynamically updates grid layout ✅
+- Speed Control adjusts highlight timing ✅
+- Cell Count correctly highlights 1–4 unique cells ✅
+- Expert Mode highlights cells sequentially when ON ✅
+- Scores increment on correct/incorrect clicks ✅
+- Game restarts when "New Game" is pressed ✅
+
+### Responsiveness
+
+The game layout was tested on:
+- ✅ Desktop (Full HD)
+- ✅ Tablet (768px width)
+- ✅ Mobile (375/325px width)
+
+Sliders, game grid, and Help accordion adapt well on all screens.
+
+### Known Issues
+
+- For better UX on mobile, score area and game grid area possition should be fixed.
+
+---
+
+### Accessibility
+
+- Buttons and sliders are keyboard-accessible (tested with Tab key) ✅
+- Color contrast follows WCAG standards (checked manually) ✅
+
+
 # Deployment
 
 The project has been deployed using GitHub Pages, providing a live and accessible URL for public access.
