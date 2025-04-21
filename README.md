@@ -579,6 +579,44 @@ Sliders, game grid, and Help accordion adapt well on all screens.
 - Buttons and sliders are keyboard-accessible (tested with Tab key) ✅
 - Color contrast follows WCAG standards (checked manually) ✅
 
+# Alternative Testing Methods:
+
+#### 1. **Chrome DevTools**
+- **Purpose:** To initially test the responsiveness and functionality of the website.
+- **Process:**
+  - Use the responsive design mode to simulate various screen sizes.
+  - Test website features and user interactions to ensure functionality across different simulated devices.
+
+#### 2. **Lighthouse**
+- **Purpose:** To assess the performance, accessibility, best practices, and SEO of the website.
+- **Process:**
+  - Run Lighthouse audits from within Chrome DevTools.
+  - Analyze the reports to identify areas for improvement in terms of performance, accessibility, SEO, and adherence to web best practices.
+  - Implement recommended changes and iterate the audit process to improve scores.
+
+- **Results:**
+### Desktop
+![Desktop](Test/Lighthouse-desktop.png)
+
+### Mobile
+![Mobile](Test/Lighthouse-mobile.png)
+
+
+#### 3. **W3C Validation**
+- **Purpose:** To ensure the HTML and CSS code meets industry standards and is free from errors.
+- **Process:**
+  - Use the W3C HTML Validator (https://validator.w3.org/) to validate the HTML of the website.
+  - Use the W3C CSS Validator (https://jigsaw.w3.org/css-validator/) to check the CSS.
+  - Document any errors or warnings identified and address them to ensure the code adheres to web standards.
+  - Re-validate post-fixes to confirm that all issues have been successfully resolved.
+
+- **Results:**
+### CSS Validation
+![CSS Validation](Test/CSS-validation.png)
+
+### HTML Validation
+![CSS Validation](Test/Html-validation.png)
+
 
 # Deployment
 
