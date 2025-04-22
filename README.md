@@ -570,9 +570,24 @@ Sliders, game grid, and Help accordion adapt well on all screens.
 
 ### Known Issues
 
-- For better UX on mobile, score area and game grid area possition should be fixed.
+- For better UX on mobile, Game Grid area possition should be fixed.
 
+**Solution:**
+Used Bootstrap option **'Sticky-Top'**
+```javascript
+<div class="col-12 col-md-7 col-lg-9 col-xl-8 sticky-top">
+```
+Also added white background and padding-top.
+```javascript
+  @media (max-width: 765px) {
+          .game-grid {
+            padding-top: 30px;
+            background-color: white;
+          }
+    }
+```
 ---
+
 
 ### Accessibility
 
@@ -616,6 +631,7 @@ Sliders, game grid, and Help accordion adapt well on all screens.
 
 ### HTML Validation
 ![CSS Validation](Test/Html-validation.png)
+
 
 
 # Deployment

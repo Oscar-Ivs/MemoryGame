@@ -121,7 +121,7 @@ body {
   }
   
 
-  
+  /* Media Queries for mobile screen sizes */
     @media (max-width: 765px) {
         .table {
             width: 85%;
@@ -142,6 +142,7 @@ body {
     
     }
 
+    /* Media Queries for larger screen sizes */
     @media (min-width: 766px) {
         #user-options {
             width: 25%;
