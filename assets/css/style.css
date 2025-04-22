@@ -22,9 +22,11 @@ body h1 {
     background-color: lightgray;
     border: 1px solid #ccc;
     width: 100%;
-    padding-bottom: 100%; /* Makes the grid squares a 1:1 aspect ratio */
+    padding-bottom: 100%;
+    /* Makes the grid squares a 1:1 aspect ratio */
     position: relative;
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 4px;
+    /* Rounded corners */
 }
 
 .game-grid div.active {
@@ -49,25 +51,31 @@ body h1 {
 /* Slider styling */
 .form-control-range {
     appearance: none;
-    -webkit-appearance: none; /* Remove default styling */
+    -webkit-appearance: none;
+    /* Remove default styling */
     width: 15%;
     height: 10px;
     border-radius: 5px;
-    background: linear-gradient(to right, green, yellow, red); /* Color the slider */
-    outline: none; /* Remove outline */
+    background: linear-gradient(to right, green, yellow, red);
+    /* Color the slider */
+    outline: none;
+    /* Remove outline */
     cursor: pointer;
-    opacity: 0.7; /* Set transparency */
+    opacity: 0.7;
+    /* Set transparency */
 }
 
 #expert-slider:disabled {
     background: grey;
     opacity: 0.4;
-    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    cursor: not-allowed;
+    /* Change cursor to indicate disabled state */
 }
 
 
 body {
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
 #new-game-button {
@@ -81,34 +89,36 @@ body {
 }
 
 .score-area p {
-    text-align:end;
+    text-align: end;
 }
+
 @media (max-width: 425px) {
     .game-grid {
         padding-left: 15px;
         padding-right: 15px;
         margin-left: 15px;
         margin-right: 15px;
-        max-width: calc(100% - 30px); /* Ensures it doesn't exceed the viewport */
-        }
+        max-width: calc(100% - 30px);
+        /* Ensures it doesn't exceed the viewport */
     }
+}
 
 
-    /* Animation */
+/* Animation */
 
 #animated-title {
     display: inline-block;
     position: relative;
     font-family: 'Limelight', cursive;
-  }
-  
-  #animated-title span {
+}
+
+#animated-title span {
     display: inline-block;
     position: relative;
     font-size: 48px;
-  }
-  
-  #ball {
+}
+
+#ball {
     width: 20px;
     height: 20px;
     background-color: red;
@@ -118,37 +128,42 @@ body {
     left: 0;
     pointer-events: none;
     z-index: 10;
-  }
-  
+}
 
-  /* Media Queries for mobile screen sizes */
-    @media (max-width: 765px) {
-        .table {
-            width: 85%;
-            margin: auto; /* Center the slider */
-            padding-bottom: 20px;
-        }
-        #user-options {
-            width: 90%;
-            margin:auto;
-        }
-        #animated-title span {
-            font-size: 85%;
-          }
-          .game-grid {
-            padding-top: 30px;
-            background-color: white;
-          }
-    
+
+/* Media Queries for mobile screen sizes */
+@media (max-width: 765px) {
+    .table {
+        width: 85%;
+        margin: auto;
+        /* Center the slider */
+        padding-bottom: 20px;
     }
 
-    /* Media Queries for larger screen sizes */
-    @media (min-width: 766px) {
-        #user-options {
-            width: 25%;
-        }
-        .accordion {
-            width:110%;
-            margin-left: -12px;
-        }
+    #user-options {
+        width: 90%;
+        margin: auto;
     }
+
+    #animated-title span {
+        font-size: 85%;
+    }
+
+    .game-grid {
+        padding-top: 30px;
+        background-color: white;
+    }
+
+}
+
+/* Media Queries for larger screen sizes */
+@media (min-width: 766px) {
+    #user-options {
+        width: 25%;
+    }
+
+    .accordion {
+        width: 110%;
+        margin-left: -12px;
+    }
+}
