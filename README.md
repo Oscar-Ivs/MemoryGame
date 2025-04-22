@@ -196,7 +196,7 @@ You can customize the game's difficulty and experience:
 
 ### Desktop version
 
-![Desktop Wireframe](assets/images/wireframes/Desktop.png.png)
+![Desktop Wireframe](assets/images/wireframes/Desktop.png)
 
 ### Tablet version
 
