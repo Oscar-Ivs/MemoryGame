@@ -227,7 +227,7 @@ Added & Updated
 ### If grid size slider moved, game stop working
 ### 🔍 Testing & Findings
 
-Incomplete State Reset: When  is called, it clears all timeouts, resets scores, and calls . However, any pending logic from the previous game round (like an ongoing timeout or  state) might not be fully resolved. Make sure  is explicitly reset to  at the start of .
+Incomplete State Reset: When `resetGame()` is called, it clears all timeouts, resets scores, and calls `startGame()`. However, any pending logic from the previous game round (like an ongoing timeout or `awaitingAnswer` state) might not be fully resolved. Make sure `awaitingAnswer` is explicitly reset to `false` at the start of `resetGame()`.
 
 Empty Grid: If the slider is moved too quickly, the  line clear the grid before it has a chance to find valid cells, causing the game logic to break.
 Adding a check for whether the grid contains cells before starting the game.
