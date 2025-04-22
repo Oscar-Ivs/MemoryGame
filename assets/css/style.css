@@ -135,6 +135,11 @@ body {
         #animated-title span {
             font-size: 85%;
           }
+          .game-grid {
+            padding-top: 20px;
+            background-color: white;
+          }
+    
     }
 
     @media (min-width: 766px) {
