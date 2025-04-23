@@ -1,4 +1,4 @@
-# Memory Game
+# Memory Game ![logo](image-1.png) 
 
 ## Project Overview
 
