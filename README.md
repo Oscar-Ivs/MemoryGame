@@ -42,23 +42,23 @@ You can customize the game's difficulty and experience:
 
 ## 🧩 How to Play
 
-    Set your preferred Grid Size, Speed, and Cell Count using the provided sliders.
+      * Set your preferred Grid Size, Speed, and Cell Count using the provided sliders.
 
-    Toggle Expert Mode ON or OFF to change game behavior.
+      *  Toggle Expert Mode ON or OFF to change game behavior.
 
-    Press "New Game" to start or restart the game.
+      *  Press "New Game" to start or restart the game.
 
-    Watch carefully as cells become highlighted:
+      *  Watch carefully as cells become highlighted:
 
-        Standard Mode: Cells highlight simultaneously.
+      *  Standard Mode: Cells highlight simultaneously.
 
-        Expert Mode: Cells highlight one after another in sequence.
+      *  Expert Mode: Cells highlight one after another in sequence.
 
-    After cells finish highlighting, click on the cells you remember:
+      *  After cells finish highlighting, click on the cells you remember:
 
-        Standard Mode: Click highlighted cells in any order.
+      *  Standard Mode: Click highlighted cells in any order.
 
-        Expert Mode: You must click highlighted cells in the exact order they appeared.
+      *  Expert Mode: You must click highlighted cells in the exact order they appeared.
 
     The game tracks your correct and incorrect answers, displayed clearly at the top.
 
@@ -238,24 +238,24 @@ The game now runs smoothly without overlapping highlights or freezes, providing 
 
 Removed
 
-> const gridSize = 4;
+`const gridSize = 4;`
 
 Added to
 
-> function()
-> clearTimeout(highlightTimeout);
-> clearTimeout(newRoundTimeout);
+`function()`
+`clearTimeout(highlightTimeout);`
+`clearTimeout(newRoundTimeout);`
 
 Removed
 
-> // Update the grid whenever the slider changes
-> slider.addEventListener('input', updateGrid);
+`// Update the grid whenever the slider changes`
+`slider.addEventListener('input', updateGrid);`
 
 Added & Updated
 
-> if (totalCells > 0) {
-> startGame();
-> }
+`if (totalCells > 0) {
+startGame();
+}`
 
 ## Issue 3
 
@@ -625,16 +625,26 @@ Added CSS style:
   z-index: 10;
 }
 ```
-
+---
 # ✅ Testing
 
 ### Functional Testing
 
-The game was manually tested on the following browsers:
-
+The game underwent rigorous manual testing across multiple platforms:
 - ✅ Chrome (Desktop, Mobile)
 - ✅ Firefox
 - ✅ Edge
+and devices (mobile, tablet, desktop), ensuring reliable performance and responsiveness.
+
+Key tested scenarios include:
+
+   - Dynamic resizing (edge cases: minimum 4x4, maximum 15x15 grid).
+
+   - Slider functionality (testing extreme values and quick consecutive adjustments).
+
+   - Multiple cell highlighting, verifying correct scoring and game logic under simultaneous interactions.
+
+All major errors and their solutions are listed above in this document; minor visual inconsistencies were promptly resolved during testing phases.
 
 **Tested Features:**
 
@@ -676,15 +686,56 @@ Also added white background and padding-top.
           }
     }
 ```
-
+-For better UX **Expert Mode** checkbox was replaced with slider, but kept checkbox properties.
+```javascript
+ <label for="expert-slider" class="form-label"><strong>Expert Mode</strong>: <span
+                                    id="expert-value">OFF</span></label>
+                            <input type="button" class="form-control-range w-100" id="expert-slider" min="0" max="1"
+                                value="0" oninput="updateExpertMode(this.value)">
+```
+```javascript
+function updateExpertMode(value) {
+    if (value === "1") {
+        isExpertMode = true; // Enable Expert Mode
+        expertValue.innerHTML = "<strong>ON</strong>"; // Make text bold
+        expertSlider.classList.remove("off");
+        expertSlider.classList.add("on");
+    } else {
+        isExpertMode = false; // Disable Expert Mode
+        expertValue.innerHTML = "<strong>OFF</strong>"; // Make text bold
+        expertSlider.classList.remove("on");
+        expertSlider.classList.add("off");
+    }
+}
+```
 ---
 
-### Accessibility
+### Accessibility Testing & Compliance
+
+Explicit accessibility tests conducted include:
+
+   - Keyboard Navigation: Ensured game operability solely using keyboard inputs, confirming full accessibility for non-mouse users.
+
+   - Color Contrast: Checked through automated tools (WebAIM Contrast Checker), ensuring adherence to WCAG 2.1 AA standards.
 
 - Buttons and sliders are keyboard-accessible (tested with Tab key) ✅
 - Color contrast follows WCAG standards (checked manually) ✅
+---
 
-# Alternative Testing Methods:
+## Future Enhancements:
+
+
+
+Potential features identified for future development include:
+
+  -  Integration of timed challenges and competitive modes.
+
+  -  Persistent player statistics via local storage or a backend service.
+
+  - Leaderboards and community interaction through external API integrations.
+  ---
+
+## Alternative Testing Methods:
 
 #### 1. **Chrome DevTools**
 
@@ -741,9 +792,9 @@ Solved by replaced `&copy;` with Copyring symbol ©
 
 The project has been deployed using GitHub Pages, providing a live and accessible URL for public access.
 
-## Steps I done for Deployment:
+### Steps I done for Deployment:
 
-### 1. Pushed my Code to GitHub
+**1. Pushed my Code to GitHub**
 
 Ensured that project is fully functional and tested locally, then pushed my final code to main GitHub repository:
 
@@ -751,7 +802,7 @@ git add .
 git commit -m "Finalized version before deployment"
 git push origin main
 
-### 2. Activated GitHub Pages
+**2. Activated GitHub Pages**
 
 Navigate to my repository: https://github.com/Oscar-Ivs/MemoryGame
 
@@ -761,7 +812,7 @@ Under the Branch section, selected my deployment branch (main) and set the direc
 
 Clicked Save to activate GitHub Pages.
 
-### 3. Verified Deployment
+**3. Verified Deployment**
 
 GitHub Pages will automatically deployed my website.
 
