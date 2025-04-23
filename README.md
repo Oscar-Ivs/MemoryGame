@@ -732,6 +732,11 @@ Also added white background and padding-top.
 
 ![CSS Validation](Test/Html-validation.png)
 
+**Error #1**
+
+Solved by replaced `&copy;` with Copyring symbol ©
+
+
 # Deployment
 
 The project has been deployed using GitHub Pages, providing a live and accessible URL for public access.
