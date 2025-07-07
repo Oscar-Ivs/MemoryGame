@@ -805,6 +805,37 @@ Potential features identified for future development include:
 Solved by replaced `&copy;` with Copyring symbol ©
 
 
+
+## 🧪 Testing Principles: Manual vs Automated
+
+###  Manual Testing (Used in This Project)
+
+Manual testing involves directly interacting with the application to identify bugs, verify functionality, and assess usability. It was used throughout this project to validate game mechanics, responsiveness, and UX features.
+
+#### ✅ Why Manual Testing Was Chosen
+
+Due to the relatively simple and self-contained nature of this interactive memory game, manual testing proved to be the most practical and efficient approach. It allowed me to:
+
+- Test grid resizing, cell highlighting logic, and expert mode interactions.
+- Verify slider controls and button functionality.
+- Observe real-time UI/UX feedback across multiple browsers and screen sizes.
+- Quickly iterate fixes during development.
+
+###  Automated Testing (Not Used)
+
+Automated testing involves using tools or scripts (e.g., Jest, Cypress, Selenium) to run tests programmatically. This is ideal for complex applications with repeated workflows and large-scale deployments.
+
+#### 🧾 When It Would Be Appropriate
+
+- Regression testing for larger applications with frequent code changes.
+- Testing across multiple user scenarios or data sets.
+- Continuous integration pipelines or team-based development workflows.
+
+### 📌 Conclusion
+
+For this project, manual testing alone was sufficient to ensure correct functionality, responsiveness, and a smooth user experience. All essential features were verified through hands-on interaction and inspection across devices and browsers.
+
+
 # Deployment
 
 The project has been deployed using GitHub Pages, providing a live and accessible URL for public access.
