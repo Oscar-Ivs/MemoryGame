@@ -630,6 +630,18 @@ Added CSS style:
   z-index: 10;
 }
 ```
+## 📚 Third-party Code Attribution
+
+Some parts of this project, specifically animation elements, were adapted and customized based on publicly available code examples, tutorials, and general documentation from reputable coding websites. 
+
+### Specific components:
+
+- **Bouncing Ball Animation**  
+  Inspired and adapted from standard JavaScript animation techniques commonly demonstrated on web development tutorial sites and official library documentation [Anime.js](https://animejs.com/) examples. Adjustments and customizations have been made extensively to match project needs and enhance user interaction.
+
+### Additional Notes:
+All third-party code segments used in this project have been significantly customized, optimized, and thoroughly tested to seamlessly integrate into the game's functionality and UX requirements.
+
 ---
 # ✅ Testing
 
