@@ -1,5 +1,10 @@
 # Memory Game ![logo](image-1.png) 
 
+## 🎮 Game Preview
+
+![Memory Game UI](assets/images/memory-game-screenshot.png)
+
+
 ## Project Overview
 
 This Memory Game project offers players an engaging and customizable memory challenge designed to test and enhance cognitive skills through interactive gameplay. Players can dynamically adjust the game's complexity through intuitive controls, tailoring their experience to their individual skill levels.
